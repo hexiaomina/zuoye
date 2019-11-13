@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			list-style:none;
+			margin:0;
+			padding:10px;
+		}
+		.tabs_box{
+			width: 500px;
+		}
+		.tabs{
+			display:flex;
+		}
+		.tabs li{
+			padding:10px;
+			padding-left:28px;
+			font-size:18px;
+			background: url('img/icon1.png') no-repeat 10px center;
+		}
+		.tabs .act{
+			color:#046fbb;
+		}
+		.contents div{
+			height: 200px;
+			display:none;
+			font-size:14px;
+			line-height:1.5;
+		}
+		.contents .show{
+			display:block;
+			margin:20px;
+		}
+		#tabs{
+			width: 1200px;
+			border:1px solid;
+			display:flex;
+			justify-content:space-between;
+			margin:0 auto;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="tabs">
+	<div id="tabs1" class="tabs_box">
+		<ul class="tabs">
+			<li class="act">学院新闻</li>
+			<li>通知公告</li>
+			<li>学术动态</li>
+		</ul>
+		<div class="contents">
+			<div class="show">学院新闻的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+			<div>通知公告的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+			<div>学术动态的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+		</div>
+	</div>
+		<div id="tabs2" class="tabs_box">
+		<ul class="tabs">
+			<li class="act">学院新闻</li>
+			<li>通知公告</li>
+			<li>学术动态</li>
+		</ul>
+		<div class="contents">
+			<div class="show">学院新闻的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+			<div>通知公告的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+			<div>学术动态的内容：Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+		</div>
+	</div>
+</div>
+	<script>
+		//选项卡：点击每个选项，被点击的选项具有特殊样式，其他选项样式正确，被点击选项样式正常，被点击的选项对应的选项内容显示，其他内容不显示
+		function tab(id){
+			var box=document.getElementById(id);
+			var ul=box.getElementsByClassName('tabs')[0];
+			var lis=ul.getElementsByTagName('li');
+			var div=box.getElementsByClassName('contents')[0];
+			var divs=div.getElementsByTagName('div');
+			for(var i=0;i<lis.length;i++){
+				lis[i].index=i;
+				lis[i].onclick=function(){
+					for(var i=0;i<lis.length;i++){
+						lis[i].removeAttribute('class');
+					}
+					for(var i=0;i<divs.length;i++){
+						divs[i].removeAttribute('class');
+					}
+					this.className='act';
+					divs[this.index].className='show';
+					// divs[].className='show'
+				}
+			}
+		}
+		tab('tabs1');
+		tab('tabs2');
+	</script>
+</body>
+</html>
